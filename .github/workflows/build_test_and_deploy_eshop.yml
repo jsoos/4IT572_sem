@@ -102,7 +102,6 @@ jobs:
         shell: bash
         id: setup
         run: |
-          sudo yum install git
           pip3 install ansible boto boto3
 
 
