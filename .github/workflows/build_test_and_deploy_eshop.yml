@@ -113,6 +113,7 @@ jobs:
           key: ${{ runner.os }}-build-${{ github.run_id }}
 
       - name: Deploy to EC2
+        uses: actions/cache@v3.0.11
         hosts: localhost
         connection: local
 
