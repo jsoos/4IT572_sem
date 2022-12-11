@@ -99,6 +99,7 @@ jobs:
     steps:
       - name: Run playbook
         run: |
+          ls
           ansible-playbook /deploy.yml -f 10
 
         #uses: saubermacherag/ansible-playbook-docker-action@v1.4
