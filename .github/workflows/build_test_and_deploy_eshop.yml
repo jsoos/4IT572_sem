@@ -97,12 +97,13 @@ jobs:
     #if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
 
-    - name: Install
-      shell: bash
-      id: setup
-      run: |
-        sudo yum install git
-        pip3 install ansible boto boto3
+    steps:
+      - name: Install
+        shell: bash
+        id: setup
+        run: |
+          sudo yum install git
+          pip3 install ansible boto boto3
 
 
 
