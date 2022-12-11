@@ -113,6 +113,6 @@ jobs:
           key: ${{ runner.os }}-build-${{ github.run_id }}
       - name: Install
         uses: actions/cache@v3.0.11
-        run: |
-          	sudo yum install git
-            pip3 install ansible boto boto3
+        run: | 
+          sudo yum install git
+          pip3 install ansible boto boto3
