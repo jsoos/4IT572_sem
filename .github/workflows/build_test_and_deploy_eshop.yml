@@ -112,7 +112,6 @@ jobs:
             ./build
           key: ${{ runner.os }}-build-${{ github.run_id }}
 
-
       - name: Deploy to EC2
         hosts: localhost
         connection: local
