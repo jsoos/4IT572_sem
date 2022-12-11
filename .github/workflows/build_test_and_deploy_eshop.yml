@@ -57,7 +57,7 @@ jobs:
           npm run build -- --colors
 
       - name: Cache node modules and build folder
-        if: ${{ github.ref == 'refs/heads/main' }}
+        #if: ${{ github.ref == 'refs/heads/main' }}
         uses: actions/cache@v3.0.11
         with: 
           path: |
@@ -94,24 +94,15 @@ jobs:
 
   Deploy:
     needs: [Build, Test]
-    if: ${{ github.ref == 'refs/heads/main' }}
+    #if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
-    env:
-      AWS_REGION: us-east-1                   # set this to your preferred AWS region, e.g. us-west-1
-      ECR_REPOSITORY: MY_ECR_REPOSITORY           # set this to your Amazon ECR repository name
-      ECS_SERVICE: MY_ECS_SERVICE                 # set this to your Amazon ECS service name
-      ECS_CLUSTER: MY_ECS_CLUSTER                 # set this to your Amazon ECS cluster name
-      ECS_TASK_DEFINITION: MY_ECS_TASK_DEFINITION # set this to the path to your Amazon ECS task definition
-                                                  # file, e.g. .aws/task-definition.json
-      CONTAINER_NAME: MY_CONTAINER_NAME           # set this to the name of the container in the
-                                                  # containerDefinitions section of your task definition
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@13d241b293754004c80624b5567555c4a39ffbe3
-        with:
-          aws-access-key-id: ${{ secrets.ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.SECRET_KEY }}
-          aws-region: ${{ env.AWS_REGION }}
+    - name: Install
+      shell: bash
+      id: setup
+      run: |
+        sudo yum install git
+        pip3 install ansible boto boto3
+
+
+
