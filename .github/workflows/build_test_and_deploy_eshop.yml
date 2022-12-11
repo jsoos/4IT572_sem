@@ -99,7 +99,6 @@ jobs:
     steps:
       - name: Run playbook
         run: |
-          cd ..
           ls
           ansible-playbook ~/deploy.yml
 
