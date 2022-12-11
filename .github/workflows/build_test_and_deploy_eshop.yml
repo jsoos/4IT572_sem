@@ -95,7 +95,7 @@ jobs:
   Deploy:
     needs: [Build, Test]
     if: ${{ github.ref == 'refs/heads/main' }}
-    runs-on: ubuntu-latest
+    runs-on: [buntu-latest, ansible]
 
     steps:
       - name: Code checkout
