@@ -118,6 +118,7 @@ jobs:
 
         tasks:
           - name: Launch EC2 Instance
+            uses: actions/cache@v3.0.11
             ec2:
               instance_type: t2.micro
               image: ami-0b0dcb5067f052a63
