@@ -98,9 +98,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run playbook
-        uses: saubermacherag/ansible-playbook-docker-action@v1.4
+        uses: dawidd6/action-ansible-playbook@v2
         with:
            playbookName: 'deploy.yml'
+           directory: ./
 
 
 
