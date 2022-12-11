@@ -101,7 +101,7 @@ jobs:
       - name: Code checkout
         uses: actions/checkout@v2.5.0
         with:
-          token: ${{ secrets.WORKFLOW_TOKEN  }}
+          token: ${{ secrets.WORKFLOW_TOKEN_SEM  }}
 
       - name: 
         uses: actions/cache@v3.0.11
@@ -111,8 +111,3 @@ jobs:
             ./node_modules
             ./build
           key: ${{ runner.os }}-build-${{ github.run_id }}
-
-
-      #- name: Deploy to EC2
-      #  hosts: 
-      #  connection: 
