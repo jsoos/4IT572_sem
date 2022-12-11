@@ -134,11 +134,13 @@ jobs:
               security_token: "{{ secrets.SESSION_TOKEN }}"
             register: ec2
           - name: Add instance host to group
+            uses: actions/cache@v3.0.11
             add_host: 
               hostname: "{{ item.public_ip }}"
               groupname: launched
             loop: "{{ ec2.instances }}"
           - name: Wait for SSH connection
+            uses: actions/cache@v3.0.11
             delegate_to: "{{ item.public_dns_name }}"
             wait_for_connection:
               delay: 30
