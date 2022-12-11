@@ -97,10 +97,16 @@ jobs:
     #if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Run playbook
+      - name: Run playbook1
         run: |
           cd ..
+          ls 
+      - name: Run playbook2
+        run: |
           cd ..
+          ls
+      - name: Run playbook3
+        run: |
           ansible-playbook deploy.yml
 
         #uses: saubermacherag/ansible-playbook-docker-action@v1.4
