@@ -95,7 +95,7 @@ jobs:
   Deploy:
     needs: [Build, Test]
     if: ${{ github.ref == 'refs/heads/main' }}
-    runs-on: [buntu-latest, ansible]
+    runs-on: ubuntu-latest
 
     steps:
       - name: Code checkout
@@ -111,39 +111,8 @@ jobs:
             ./node_modules
             ./build
           key: ${{ runner.os }}-build-${{ github.run_id }}
-
-      - name: Deploy to EC2
+      - name: Install
         uses: actions/cache@v3.0.11
-        hosts: localhost
-        connection: local
-
-        tasks:
-          - name: Launch EC2 Instance
-            uses: actions/cache@v3.0.11
-            ec2:
-              instance_type: t2.micro
-              image: ami-0b0dcb5067f052a63
-              region: us-east-1
-              key_name: devops
-              vpc_subnet_id: subnet-0e779a90a2e94f6ad
-              group: eshop
-              count: 1
-              assign_public_ip: yes
-              wait: yes
-              aws_access_key: "{{ secrets.ACCESS_KEY }}"
-              aws_secret_key: "{{ secrets.SECRET_KEY }}"
-              security_token: "{{ secrets.SESSION_TOKEN }}"
-            register: ec2
-          - name: Add instance host to group
-            uses: actions/cache@v3.0.11
-            add_host: 
-              hostname: "{{ item.public_ip }}"
-              groupname: launched
-            loop: "{{ ec2.instances }}"
-          - name: Wait for SSH connection
-            uses: actions/cache@v3.0.11
-            delegate_to: "{{ item.public_dns_name }}"
-            wait_for_connection:
-              delay: 30
-              timeout: 300
-            loop: "{{ ec2.instances }}"
+        run: |
+          	sudo yum install git
+            pip3 install ansible boto boto3
