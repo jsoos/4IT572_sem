@@ -98,11 +98,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to EC2
-        shell: bash
-        id: setup
-        run: |
-          pip3 install ansible boto boto3
+      - name: Deploy to AWS CloudFormation
+        uses: aws-actions/aws-cloudformation-github-deploy@v1.1.0
         hosts: localhost
         connection: local
 
