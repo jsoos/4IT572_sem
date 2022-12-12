@@ -99,9 +99,11 @@ jobs:
     steps:
       - name: ls
         run: ls
+      - name: cd
+        run: cd /jsoos/4IT572_sem
       - name: Run playbook
         run: |
-          ansible-playbook /jsoos/4IT572_sem/deploy.yml@refs/heads/ec2_deploy
+          ansible-playbook deploy.yml
 
         #uses: saubermacherag/ansible-playbook-docker-action@v1.4
         #with:
