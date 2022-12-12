@@ -104,8 +104,8 @@ jobs:
         #uses: saubermacherag/ansible-playbook-docker-action@v1.4
         #with:
         #   playbookName: '.ansible/playbooks/deploy.yml'
-        #   verbosity: "vv"
-        
+        #   verbosity: "vv"  
+
 
 
 
