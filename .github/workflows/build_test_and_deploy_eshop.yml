@@ -99,7 +99,7 @@ jobs:
     steps:
       - name: Run playbook
         run: |
-          docker run --cap-drop=all -it -e ALGO_ARGS="-e " -v <path>:/data trailofbits/algo:latest
+          cd /
           ansible-playbook deploy.yml
 
         #uses: saubermacherag/ansible-playbook-docker-action@v1.4
