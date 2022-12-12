@@ -57,7 +57,7 @@ jobs:
           npm run build -- --colors
 
       - name: Cache node modules and build folder
-        #if: ${{ github.ref == 'refs/heads/main' }}
+        if: ${{ github.ref == 'refs/heads/main' }}
         uses: actions/cache@v3.0.11
         with: 
           path: |
@@ -94,7 +94,7 @@ jobs:
 
   Deploy:
     needs: [Build, Test]
-    #if: ${{ github.ref == 'refs/heads/main' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
       - name: Get project files from GIT
@@ -102,8 +102,7 @@ jobs:
       - name: ls
         run: ls
       - name: Run playbook
-        run: |
-          ansible-playbook deploy.yml
+        run: ansible-playbook 4IT572_sem/deploy.yml
 
         #uses: saubermacherag/ansible-playbook-docker-action@v1.4
         #with:
