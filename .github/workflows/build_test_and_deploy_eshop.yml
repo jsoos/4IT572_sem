@@ -97,13 +97,9 @@ jobs:
     #if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Get latest file
-        set_fact:
-          latest_file: "{{ found_files.files | sort(attribute='mtime',reverse=true) | first }}"
       - name: Run playbook
         run: |
-          cd /
-          ansible-playbook deploy.yml
+          ansible-playbook ./deploy.yml
 
         #uses: saubermacherag/ansible-playbook-docker-action@v1.4
         #with:
