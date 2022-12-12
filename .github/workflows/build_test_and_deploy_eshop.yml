@@ -99,12 +99,13 @@ jobs:
     steps:
       - name: Run playbook
         run: |
-          ansible-playbook jsoos/4IT572_sem/deploy.yml@refs/heads/ec2_deploy
+          ansible-playbook /jsoos/4IT572_sem/deploy.yml@refs/heads/ec2_deploy
 
         #uses: saubermacherag/ansible-playbook-docker-action@v1.4
         #with:
         #   playbookName: '.ansible/playbooks/deploy.yml'
         #   verbosity: "vv"  
+        #  jsoos/4IT572_sem/.github/workflows/build_test_and_deploy_eshop.yml@refs/heads/ec2_deploy
 
 
 
