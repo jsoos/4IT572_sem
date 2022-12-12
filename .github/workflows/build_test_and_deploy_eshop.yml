@@ -99,16 +99,10 @@ jobs:
     steps:
       - name: Get project files from GIT
         run: git clone https://github.com/jsoos/4IT572_sem.git
-      - name: ls
-        run: ls
+      - name: Install
+        run: pip3 install ansible boto boto3
       - name: Run playbook
         run: ansible-playbook 4IT572_sem/deploy.yml
-
-        #uses: saubermacherag/ansible-playbook-docker-action@v1.4
-        #with:
-        #   playbookName: '.ansible/playbooks/deploy.yml'
-        #   verbosity: "vv"  
-        #  jsoos/4IT572_sem/.github/workflows/build_test_and_deploy_eshop.yml@refs/heads/ec2_deploy
 
 
 
