@@ -116,7 +116,7 @@ jobs:
           playbook: 4IT572_sem/deploy.yml
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           options: |
-            --extra-vars access_key=${{ secrets.ACCESS_KEY }}
+            --extra-vars access_key=${{ secrets.ACCESS_KEY }} secret_key=${{ secrets.SECRET_KEY }} session_token=${{ secrets.SESSION_TOKEN }}
 
           #vault_password: ${{secrets.VAULT_PASSWORD}}
 
