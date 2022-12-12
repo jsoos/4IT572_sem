@@ -98,9 +98,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get project files from GIT
-        git:
-          repo: 'https://github.com/jsoos/4IT572_sem.git'
-          dest: /
+        run: git clone https://github.com/jsoos/4IT572_sem.git
       - name: ls
         run: ls
       - name: Run playbook
