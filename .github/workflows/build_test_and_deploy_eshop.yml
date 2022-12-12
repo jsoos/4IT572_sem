@@ -100,7 +100,7 @@ jobs:
       - name: ls
         run: ls
       - name: cd
-        run: cd /jsoos/4IT572_sem
+        run: cd /jsoos/4IT572_sem@refs/heads/ec2_deploy
       - name: Run playbook
         run: |
           ansible-playbook deploy.yml
