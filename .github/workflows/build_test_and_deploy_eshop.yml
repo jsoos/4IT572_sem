@@ -99,6 +99,13 @@ jobs:
     steps:
       - name: Get project files from GIT
         run: git clone https://github.com/jsoos/4IT572_sem.git
+
+      #- name: Vault
+      #  run: |
+      #    cd 4IT572_sem
+      #    ansible-vault create group_vars/all/aws.yml
+
+
       - name: Install
         run: pip3 install ansible boto boto3
       - name: Install AWS
@@ -108,6 +115,10 @@ jobs:
         with:
           playbook: 4IT572_sem/deploy.yml
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          options: |
+            --extra-vars access_key=${{ secrets.ACCESS_KEY }}
+
+          #vault_password: ${{secrets.VAULT_PASSWORD}}
 
 
       #- name: Run playbook
