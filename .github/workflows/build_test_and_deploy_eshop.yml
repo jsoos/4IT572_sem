@@ -104,8 +104,8 @@ jobs:
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
         with:
-        playbook: 4IT572_sem/deploy.yml
-        key: ${{secrets.SSH_PRIVATE_KEY}}
+          playbook: 4IT572_sem/deploy.yml
+          key: ${{secrets.SSH_PRIVATE_KEY}}
 
 
       #- name: Run playbook
