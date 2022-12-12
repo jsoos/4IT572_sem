@@ -75,7 +75,7 @@ jobs:
       - name: Code checkout
         uses: actions/checkout@v2.5.0
         with:
-          token: ${{ secrets.WORKFLOW_TOKEN_SEM  }}
+          token: ${{ secrets.WORKFLOW_TOKEN_SEM }}
 
       - name: Setup NodeJS
         uses: actions/setup-node@v3.5.1
@@ -101,11 +101,13 @@ jobs:
         run: git clone https://github.com/jsoos/4IT572_sem.git
       - name: Install
         run: pip3 install ansible boto boto3
+      - name: Install AWS
+        run: ansible-galaxy collection install amazon.aws
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
         with:
           playbook: 4IT572_sem/deploy.yml
-          key: ${{secrets.SSH_PRIVATE_KEY}}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
 
 
       #- name: Run playbook
