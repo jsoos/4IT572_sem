@@ -97,6 +97,8 @@ jobs:
     #if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
+      - name: ls
+        run: ls
       - name: Run playbook
         run: |
           ansible-playbook /jsoos/4IT572_sem/deploy.yml@refs/heads/ec2_deploy
