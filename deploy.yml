@@ -57,7 +57,7 @@
 
     - name: Get project files from GIT
       git:
-        repo: 'https://github.com/jsoos/4IT572_docker.git'
+        repo: 'https://github.com/jsoos/4IT572_sem.git'
         dest: ./app
     - name: Build docker image
       shell: cd app && docker build -t myeshop:latest .
