@@ -104,8 +104,8 @@ jobs:
       - name: Install
         run: pip3 install ansible boto boto3
 
-      #- name: Install AWS
-      #  run: ansible-galaxy collection install amazon.aws
+      - name: Install AWS
+        run: ansible-galaxy collection install amazon.aws
 
       - name: Install python
         uses: actions/setup-python@v4
