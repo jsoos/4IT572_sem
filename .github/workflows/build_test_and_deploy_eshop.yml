@@ -96,6 +96,7 @@ jobs:
     needs: [Build, Test]
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
+
     steps:
       - name: Get project files from GIT
         run: git clone https://github.com/jsoos/4IT572_sem.git
@@ -103,8 +104,8 @@ jobs:
       - name: Install
         run: pip3 install ansible boto boto3
 
-      - name: Install AWS
-        run: ansible-galaxy collection install amazon.aws
+      #- name: Install AWS
+      #  run: ansible-galaxy collection install amazon.aws
 
       - name: Install python
         uses: actions/setup-python@v4
@@ -118,4 +119,4 @@ jobs:
           echo "${{ secrets.VAULT_PASSWORD }}" > .vault_password
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > .ssh_private_key.pem
           chmod 400 .ssh_private_key.pem
-          ansible-playbook 4IT572_sem/deploy.yml --vault-password-file .vault_password --key-file .ssh_private_key.pem --user ec2-user
+          ansible-playbook 4IT572_sem/ansible/deploy.yml --vault-password-file .vault_password --key-file .ssh_private_key.pem --user ec2-user
