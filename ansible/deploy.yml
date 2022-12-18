@@ -11,7 +11,7 @@
         region: us-east-1
         key_name: devops
         vpc_subnet_id: subnet-0e779a90a2e94f6ad
-        group: eshop
+        security_group: eshop
         count: 1
         network:
           assign_public_ip: yes
@@ -73,5 +73,3 @@
     - wait_for:
         port:
           80
-
-
