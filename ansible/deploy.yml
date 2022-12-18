@@ -5,6 +5,7 @@
   tasks:
     - name: Launch EC2 Instance
       amazon.aws.ec2_instance:
+        name: 4IT572_sem
         instance_type: t2.micro
         image: 
           id: ami-0b0dcb5067f052a63
@@ -53,7 +54,7 @@
         enabled: yes
       become: yes
     - name: Start Docker on startup
-      shell: systemctl enable docker
+      shell: systemctl enable docker --now
       become: yes
     - name: Set rights to Docker
       shell: usermod -a -G docker ec2-user
@@ -74,3 +75,17 @@
     - wait_for:
         port:
           80
+
+- name: Remove old EC2 
+  hosts: localhost
+  tasks:
+  - name: Remove EC2
+    amazon.aws.ec2_instance:
+      region: us-east-1
+      access_key: "{{ access_key }}"
+      secret_key: "{{ secret_key }}"
+      session_token: "{{ session_token }}"
+      filters:
+        "tag:Name": "4IT572_sem"
+      exact_count: 2
+      wait: yes
